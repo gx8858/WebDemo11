@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
  * 增强的类
- * @author Administrator
- *
  */
 public class MyRequest extends HttpServletRequestWrapper{
 	
@@ -51,10 +49,3 @@ public class MyRequest extends HttpServletRequestWrapper{
 	}
 
 }
-
-
-
-
-
-
-
