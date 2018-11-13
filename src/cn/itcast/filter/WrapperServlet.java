@@ -13,18 +13,22 @@ public class WrapperServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		// 我已经把Tomcat实现增强了
 		// MyRequest myreq = new MyRequest(request);
 		
 		// 获取中文乱码
+//		String username = myreq.getParameter("username");
 		String username = request.getParameter("username");
 		System.out.println("GET方式："+username);
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		// MyRequest myreq = new MyRequest(request);
 		// 获取中文乱码的解决
+//		String username = myreq.getParameter("username");
 		String username = request.getParameter("username");
 		System.out.println("POST方式："+username);
 	}
