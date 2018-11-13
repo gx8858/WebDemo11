@@ -27,11 +27,7 @@ public class WrapperFilter implements Filter {
 		chain.doFilter(myreq, response);
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }
