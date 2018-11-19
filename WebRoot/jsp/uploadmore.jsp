@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>多文件上传</title>
 
 <script type="text/javascript">
-	// 项div中间添加文本框
+	// 向div中间添加文本框
 	function run(){
 		var div = document.getElementById("divId");
 		div.innerHTML += "<div><input type='file' name='myfile'><input type='button' value='删除' onclick='del(this)'/></div>";
