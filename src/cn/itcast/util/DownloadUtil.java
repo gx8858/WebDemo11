@@ -6,8 +6,6 @@ import sun.misc.BASE64Encoder;
 
 /**
  * 下载的工具类（类似火狐的浏览器的编码）
- * @author Administrator
- *
  */
 public class DownloadUtil {
 	
