@@ -11,6 +11,8 @@
 <h3>文件下载</h3>
 <h4><a href="${ pageContext.request.contextPath }/download?filename=girl6.jpg">girl6.jpg</a></h4>
 <h4><a href="${ pageContext.request.contextPath }/download?filename=hello.txt">hello.txt</a></h4>
+<!-- 中文下载会乱码，解决办法请看DownloadlistServlet类 -->
+<h4><a href="${ pageContext.request.contextPath }/download?filename=你好.txt">你好.txt</a></h4>
 
 </body>
 </html>
