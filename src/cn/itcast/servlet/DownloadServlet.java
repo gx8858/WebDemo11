@@ -1,5 +1,6 @@
 package cn.itcast.servlet;
 
+import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 文件下载
- * @author Administrator
- *
  */
 public class DownloadServlet extends HttpServlet {
 
@@ -32,7 +31,7 @@ public class DownloadServlet extends HttpServlet {
 		// 获取download文件夹的绝对磁盘路径
 		String path = getServletContext().getRealPath("/download");
 		// 创建输入流
-		InputStream in = new FileInputStream(path+"/"+filename);
+		InputStream in = new BufferedInputStream(new FileInputStream(path+"/"+filename));
 		// 设置两个响应头信息
 		// Content-Type : 值是什么	text/html;charset=UTF-8;
 		// 在ServletContext对象中，提供一个方法，通过文件的名称自动的获取文件的MIME的类型
