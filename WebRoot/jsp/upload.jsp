@@ -12,7 +12,7 @@
 
 <form action="${ pageContext.request.contextPath }/upload" method="post" enctype="multipart/form-data">
 	文件描述：<input type="text" name="filedesc" /><br/>
-	上传文件：<input type="file" name="myfile" /><br/>
+	上传文件：<input type="file" name="myfile" multiple="multiple"/><br/>
 	<input type="submit" value="上传" />
 </form>
 
