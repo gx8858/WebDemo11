@@ -7,14 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>下载多个文件</title>
 </head>
 <body>
 
 <h3>下载多个文件</h3>
 
 <%
-	String rootPath = "D:\\root";
+	String rootPath = "D:\\Java\\root";
 	// 向队列存放File
 	File root = new File(rootPath);
 	// 创建队列
@@ -24,6 +24,7 @@
 	// 循环的条件，如果队列不为空，一直循环
 	while(!queue.isEmpty()){
 		// 先获取根节点
+		// poll()获取并移除此队列的头，如果此队列为空，则返回 null。
 		File file = queue.poll();
 		// 获取file文件下的所有子节点
 		File [] files = file.listFiles();
@@ -47,14 +48,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
