@@ -24,8 +24,6 @@ import cn.itcast.util.UploadUtil;
 
 /**
  * 文件上传
- * @author Administrator
- *
  */
 public class UploadServlet extends HttpServlet {
 
@@ -55,14 +53,18 @@ public class UploadServlet extends HttpServlet {
 		factory.setSizeThreshold(1024*1024*3);	// 设置缓冲区为3M
 		// 先获取temp的绝对磁盘路径
 		String temp  = getServletContext().getRealPath("/temp");
+		// 对于大文件不能缓存在内存，需要缓存到磁盘，防止存放到系统盘造成系统盘空间不足
 		// 设置临时文件（文件的大小大于缓冲区的大小）
 		factory.setRepository(new File(temp));
 		
 		// 创建核心解析对象
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		
+		// 设置单个上传文件的最大值
+		upload.setFileSizeMax(1024*1024*5);
+		
 		// 设置上传文件的总大小
-		// upload.setSizeMax(1024*1024*5);	// 设置5M
+//		upload.setSizeMax(1024*1024*5);	// 设置5M
 		
 		// 设置上传文件的文件名称的编码
 		upload.setHeaderEncoding("UTF-8");
@@ -87,14 +89,18 @@ public class UploadServlet extends HttpServlet {
 					// 先获取文件的名称
 					String filename = fileItem.getName();
 					
+					// 如果使用的IE6，获取文件的内容会例如：d:/aa/boy3.jpg,所以要处理一下
+					int begin = filename.lastIndexOf("/");
+					filename = filename.substring(begin + 1);
+					
 					// 你应该在数据库中把文件的原名称和UUID的名称都需要保存到数据库中。
 					// 获取唯一的字符串
 					filename = UUID.randomUUID().toString()+"_"+filename;
-					System.out.println("文件名称："+filename);
+					System.out.println("文件名称："+filename);  
 					// 获取文件的输入流
 					InputStream in = new BufferedInputStream(fileItem.getInputStream());
-					// 项某个文件中写入
-					// 项WebRoot/upload目录写入
+					// 向某个文件中写入
+					// 向WebRoot/upload目录写入
 					String path = getServletContext().getRealPath("/upload");
 					
 					// 进行目录分离
@@ -111,6 +117,7 @@ public class UploadServlet extends HttpServlet {
 					while((len = in.read(b)) != -1){
 						os.write(b, 0, len);
 					}
+					
 					in.close();
 					os.close();
 					
